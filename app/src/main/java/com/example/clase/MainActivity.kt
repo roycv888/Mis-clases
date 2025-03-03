@@ -12,7 +12,7 @@ typealias aliasdato = MutableMap<Int, ArrayList<String>>
 typealias aliasfuncion = (a: Int, b: Int) -> Int
 
 class MainActivity : AppCompatActivity() {
-
+    //:)
     companion object {
         lateinit var maincontext: Context
     }
