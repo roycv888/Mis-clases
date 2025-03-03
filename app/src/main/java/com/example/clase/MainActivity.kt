@@ -125,6 +125,42 @@ class MainActivity : AppCompatActivity() {
 
         var componente = star("Sol2", 21424f, "Via Lactea2")
         println("Datos star5 con componentes: $(componente.component1)")*/
+
+        /*
+        * NullPointerException  nulo
+        * ArithmeticException
+        * SecurityException
+        * ArrayIndexOutOfBoundException
+        * */
+        try {
+            println("Divion 5/0 = ${5/0}")
+        } catch (e: Exception) {
+            println("error: $e")
+        } finally {
+            println("Pase lo que pase vamos a hacer esto...")
+        }
+        println(".................................")
+
+        var res1 = value_try(10,2)
+        println(res1)
+        var res2 = value_try(10,0)
+        println(res2)
+
+
+    }
+
+    private fun value_try(a:Int, b:Int): Any {
+        var res = try {
+            println("Divion ${a/b}")
+            a/b
+        } catch (e: Exception) {
+            println("el error encontrado es : $e")
+            "division no permitida"
+        } finally {
+            println("Pase lo que pase vamos a hacer esto...")
+            "pase lo que pasa"
+        }
+        return res
     }
 
     private fun recorrerArray(array: IntArray, fn: (Int) -> Unit) {
