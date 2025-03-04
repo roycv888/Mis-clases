@@ -147,6 +147,16 @@ class MainActivity : AppCompatActivity() {
         println(res2)
 
 
+        var password: String = "1234"
+        if(password.length<6)
+        {
+            throw Exception ("password muy corto")
+        }
+        else
+        {
+            println("password seguro")
+        }
+
     }
 
     private fun value_try(a:Int, b:Int): Any {
