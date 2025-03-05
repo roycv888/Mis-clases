@@ -133,7 +133,7 @@ class MainActivity : AppCompatActivity() {
         * ArrayIndexOutOfBoundException
         * */
         try {
-            println("Divion 5/0 = ${5/0}")
+            println("Divion 5/0 = ${5 / 0}")
         } catch (e: Exception) {
             println("error: $e")
         } finally {
@@ -141,80 +141,161 @@ class MainActivity : AppCompatActivity() {
         }
         println(".................................")
 
-        var res1 = value_try(10,2)
+        var res1 = value_try(10, 2)
         println(res1)
-        var res2 = value_try(10,0)
+        var res2 = value_try(10, 0)
         println(res2)
 
+        /*
+                var password: String = "1234"
+                if (password.length < 6) {
+                    throw Exception ("password muy corto")
+                } else {
+                    println("password seguro")
+                }
 
-        var password: String = "1234"
-        if(password.length<6)
-        {
-            throw Exception ("password muy corto")
-        }
-        else
-        {
-            println("password seguro")
-        }
+
+                //Scope function
+                persona1.let {
+                    it.die()
+                    it.height = 1.8f
+                    it.passport = "0122"
+                }
+
+                persona1.apply {
+                    this.die()
+                    this.height = 1.6f
+                    this.passport = "124545"
+                }
+
+
+                var jose = Person("Jose", "23654").apply {
+                    this.die()
+                    this.height = 1.6f
+                    this.passport = "124545"
+                }
+                    .also {
+                        it.alive = true
+                    }
+
+                var maria = Person("Maria", "15446", 0.5f).run {
+                    this.height = 1.6f
+                    this.passport = "124545"
+
+                    "Marta no es muy alta"
+                }
+
+                var marta = with(Person("Marta", "21231", 0.5f))
+                {
+                    this.height = 1.6f
+                    this.passport = "124545"
+
+                    5
+                }*/
+
+        println(
+            "el numero es par? ${
+                mifuncion(5,
+                    { n1 ->
+                        n1 % 2 == 0
+                    })
+            }"
+        )
+        println(
+            "el numero es primo? ${
+                mifuncion(5,
+                    { n1 ->
+                        
+                        if (n1 <= 1) {
+                            return@mifuncion false
+                        }
+                        for (i in 2 until n1) {
+                            if (n1 % i == 0) return@mifuncion false
+                        }
+                        true
+                    })
+            }"
+        )
+
+        println(
+            "el numero es guay? ${
+                mifuncion(15,
+                    { n1 ->
+
+                        var n: Int = 0
+                        for (i in 1 until n1) {
+                            n += i
+
+                            if (n == n1)
+                            {return@mifuncion true}
+                        }
+                        false
+                    })
+            }"
+        )
 
     }
 
-    private fun value_try(a:Int, b:Int): Any {
-        var res = try {
-            println("Divion ${a/b}")
-            a/b
-        } catch (e: Exception) {
-            println("el error encontrado es : $e")
-            "division no permitida"
-        } finally {
-            println("Pase lo que pase vamos a hacer esto...")
-            "pase lo que pasa"
-        }
-        return res
+    private fun mifuncion(n1: Int, fn: (n1: Int) -> Boolean): Boolean {
+        return fn(n1)
     }
 
-    private fun recorrerArray(array: IntArray, fn: (Int) -> Unit) {
-        for (i in array)
-            fn(i)
+private fun value_try(a: Int, b: Int): Any {
+    var res = try {
+        println("Divion ${a / b}")
+        a / b
+    } catch (e: Exception) {
+        println("el error encontrado es : $e")
+        "division no permitida"
+    } finally {
+        println("Pase lo que pase vamos a hacer esto...")
+        "pase lo que pasa"
     }
+    return res
+}
 
-    private fun inColombia(h: Float): Boolean {
-        return h >= 1.6f
-    }
+private fun recorrerArray(array: IntArray, fn: (Int) -> Unit) {
+    for (i in array)
+        fn(i)
+}
 
-    private fun inPeru(h: Float): Boolean {
-        return h >= 1.2f
-    }
+private fun inColombia(h: Float): Boolean {
+    return h >= 1.6f
+}
 
-    private fun Calculadora(n1: Int, n2: Int, fn: (Int, Int) -> Int): Int {
-        return fn(n1, n2)
-    }
+private fun inPeru(h: Float): Boolean {
+    return h >= 1.2f
+}
 
-    private fun suma(x: Int, y: Int): Int {
-        return x + y
-    }
+private fun Calculadora(n1: Int, n2: Int, fn: (Int, Int) -> Int): Int {
+    return fn(n1, n2)
+}
 
-    private fun resta(x: Int, y: Int): Int {
-        return x - y
-    }
+private fun suma(x: Int, y: Int): Int {
+    return x + y
+}
 
-    private fun multiplica(x: Int, y: Int) = x * y
-    private fun divide(x: Int, y: Int) = x / y
+private fun resta(x: Int, y: Int): Int {
+    return x - y
+}
+
+private fun multiplica(x: Int, y: Int) = x * y
+private fun divide(x: Int, y: Int) = x / y
 
 
-    private fun IntArray.show() {
-        println("[")
-        for (i in this) print("$i ")
-        println("]")
-    }
+private fun IntArray.show() {
+    println("[")
+    for (i in this) print("$i ")
+    println("]")
+}
 
-    private fun String.noSpaces(): String {
-        return this.replace(" ", "")
-    }
+private fun String.noSpaces(): String {
+    return this.replace(" ", "")
+}
 
-    private fun SinSpaces(texto: String): String {
-        return texto.replace(" ", "")
-    }
+private fun SinSpaces(texto: String): String {
+    return texto.replace(" ", "")
+}
 
 
 }
